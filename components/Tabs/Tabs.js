@@ -15,7 +15,7 @@ class TabLink {
     this.tabItem = new TabItem(this.itemElement);
     
     // Add a click event listener on this instance, calling the select method on click
-    this.tabItem.addEventListener('click', () => {
+    this.element.addEventListener('click', () => {
       this.select();
     });
 
@@ -29,7 +29,8 @@ class TabLink {
     // Using a loop or the forEach method remove the 'tabs-link-selected' class from all of the links
     // Array.from(links).forEach();
     Array.from(links).forEach((link) => {
-      link.classList.remove('tabs-link-selected')
+      link.classList.remove('tabs-link-selected');
+      console.log('item removed');
     });
 
     // Add a class named "tabs-link-selected" to this link
@@ -38,8 +39,6 @@ class TabLink {
     
     // Call the select method on the item associated with this link
     this.tabItem.select(this.itemElement);
-
-    console.log('selected in tablink');
 
   }
 }
@@ -66,7 +65,6 @@ class TabItem {
     //this.element;
     this.element.classList.add('tabs-item-selected');
     
-    console.log('selected in tabitem');
   }
 }
 
@@ -80,4 +78,4 @@ class TabItem {
 
 */
 
-links = document.querySelectorAll('.tabs-links').forEach(link => new TabLink(link));;
+links = document.querySelectorAll('.tabs-link').forEach((link) => new TabLink(link));;
